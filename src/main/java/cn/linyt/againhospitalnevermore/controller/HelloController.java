@@ -1,5 +1,6 @@
 package cn.linyt.againhospitalnevermore.controller;
 
+import cn.linyt.againhospitalnevermore.annotation.JwtIgnore;
 import cn.linyt.againhospitalnevermore.response.Result;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hello")
 public class HelloController {
 
+    @JwtIgnore
     @RequestMapping
     public Result hello() {
 
