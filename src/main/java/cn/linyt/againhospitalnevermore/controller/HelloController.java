@@ -18,7 +18,7 @@ public class HelloController {
 
     @JwtIgnore
     @PostMapping
-    public Result hello(@RequestBody String username) {
+    public Result hello(@RequestParam String username) {
 
         JSONObject result = new JSONObject();
         result.put("token", username);
