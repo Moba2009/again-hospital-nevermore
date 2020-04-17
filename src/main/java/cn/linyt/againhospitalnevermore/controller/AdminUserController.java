@@ -30,8 +30,8 @@ public class AdminUserController {
     @Autowired
     private Audience audience;
 
-    @PostMapping("/login")
     @JwtIgnore
+    @PostMapping("/login")
     public Result adminLogin(HttpServletResponse response, String username, String password) {
 
         // 这里模拟测试, 默认登录成功，返回用户ID和角色信息
