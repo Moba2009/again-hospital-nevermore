@@ -2,6 +2,7 @@ package cn.linyt.againhospitalnevermore.controller;
 
 import cn.linyt.againhospitalnevermore.annotation.JwtIgnore;
 import cn.linyt.againhospitalnevermore.entity.Audience;
+import cn.linyt.againhospitalnevermore.entity.User;
 import cn.linyt.againhospitalnevermore.response.Result;
 import cn.linyt.againhospitalnevermore.utils.JwtTokenUtil;
 import com.alibaba.fastjson.JSONObject;
@@ -29,12 +30,12 @@ public class AdminUserController {
 
 //    @JwtIgnore
     @PostMapping("/login")
-    public Result adminLogin(HttpServletResponse response, String username, String password) {
+    public Result adminLogin(HttpServletResponse response, @RequestBody User user) {
 
         // 这里模拟测试, 默认登录成功，返回用户ID和角色信息
-        if (!"admin".equals(username) && !"666666".equals(password)) {
-            log.info("### username: " + username + " ###");
-            log.info("### password: " + password + " ###");
+        if (!"admin".equals(user.getUsername()) && !"666666".equals(user.getPassword())) {
+            log.info("### username: " + user.getUsername() + " ###");
+            log.info("### password: " + user.getPassword() + " ###");
             log.info("### 用户名或密码错误! ###");
             return Result.FAIL("用户名或密码错误!");
         }
@@ -42,7 +43,7 @@ public class AdminUserController {
         String role = "admin";
 
         // 创建token
-        String token = JwtTokenUtil.createJWT(userId, username, role, audience);
+        String token = JwtTokenUtil.createJWT(userId, user.getUsername(), role, audience);
         log.info("### 登录成功, token={} ###", token);
 
         // 将token放在响应头
