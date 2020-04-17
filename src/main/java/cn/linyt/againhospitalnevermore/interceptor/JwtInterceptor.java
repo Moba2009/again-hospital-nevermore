@@ -35,7 +35,7 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
 
         // 登录的不拦截
         String requestURI = request.getRequestURI();
-        if (requestURI.contains("/login")) {
+        if (requestURI.contains("/login") || requestURI.contains("/hello")) {
             log.info("### is login ###");
             return true;
         }
