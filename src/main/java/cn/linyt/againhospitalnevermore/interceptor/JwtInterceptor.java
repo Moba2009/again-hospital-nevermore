@@ -34,13 +34,13 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         // 登录的不拦截
-        String requestURI = request.getRequestURI();
+        /*String requestURI = request.getRequestURI();
         if (requestURI.contains("/login") || requestURI.contains("/hello")) {
             log.info("### is login ###");
             return true;
-        }
+        }*/
         // 忽略带JwtIgnore注解的请求, 不做后续token认证校验
-        /*if (handler instanceof HandlerMethod) {
+        if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             JwtIgnore jwtIgnore = handlerMethod.getMethodAnnotation(JwtIgnore.class);
             if (jwtIgnore != null) {
@@ -48,7 +48,7 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
                 return true;
             }
             log.info("false");
-        }*/
+        }
 
         if (HttpMethod.OPTIONS.equals(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);

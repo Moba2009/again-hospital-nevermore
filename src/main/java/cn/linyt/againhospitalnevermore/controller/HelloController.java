@@ -21,11 +21,11 @@ public class HelloController {
 
 //    @JwtIgnore
     @PostMapping
-    public Result hello(@RequestParam String username) {
+    public Result hello(@RequestBody String data) {
 
-        log.info("### hello: " + username + " ###");
+        log.info("### hello: " + data + " ###");
         JSONObject result = new JSONObject();
-        result.put("token", username);
+        result.put("token", data);
         return Result.SUCCESS(result);
     }
 }
