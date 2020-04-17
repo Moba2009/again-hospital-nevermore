@@ -21,7 +21,7 @@ public class HelloController {
 
 //    @JwtIgnore
     @PostMapping
-    public Result hello( String username) {
+    public Result hello(@RequestParam String username) {
 
         log.info("### hello: " + username + " ###");
         JSONObject result = new JSONObject();
