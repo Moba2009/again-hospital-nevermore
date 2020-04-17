@@ -20,10 +20,10 @@ public class HelloController {
 
     @JwtIgnore
     @PostMapping
-    public Result hello() {
+    public Result hello(String username) {
 
         JSONObject result = new JSONObject();
-        result.put("token", "hello world");
+        result.put("token", username);
         return Result.SUCCESS(result);
     }
 }
