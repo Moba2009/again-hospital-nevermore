@@ -29,7 +29,7 @@ public class AdminUserController {
 
 //    @JwtIgnore
     @PostMapping("/login")
-    public Result adminLogin(HttpServletResponse response, @RequestBody String username, @RequestBody String password) {
+    public Result adminLogin(HttpServletResponse response, String username, String password) {
 
         // 这里模拟测试, 默认登录成功，返回用户ID和角色信息
         if (!"admin".equals(username) && !"666666".equals(password)) {
