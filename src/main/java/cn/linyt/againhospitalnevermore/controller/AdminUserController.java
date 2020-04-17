@@ -30,7 +30,7 @@ public class AdminUserController {
     @Autowired
     private Audience audience;
 
-    @JwtIgnore
+//    @JwtIgnore
     @PostMapping("/login")
     public Result adminLogin(HttpServletResponse response, String username, String password) {
 
