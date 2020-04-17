@@ -3,6 +3,7 @@ package cn.linyt.againhospitalnevermore.controller;
 import cn.linyt.againhospitalnevermore.annotation.JwtIgnore;
 import cn.linyt.againhospitalnevermore.response.Result;
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @CrossOrigin
+@Slf4j
 @RequestMapping("/hello")
 public class HelloController {
 
@@ -21,6 +23,7 @@ public class HelloController {
     @PostMapping
     public Result hello(@RequestBody String username) {
 
+        log.info("### hello ###");
         JSONObject result = new JSONObject();
         result.put("token", username);
         return Result.SUCCESS(result);
