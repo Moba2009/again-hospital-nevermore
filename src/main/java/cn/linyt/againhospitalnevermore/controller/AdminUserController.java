@@ -7,10 +7,7 @@ import cn.linyt.againhospitalnevermore.utils.JwtTokenUtil;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
@@ -32,10 +29,12 @@ public class AdminUserController {
 
 //    @JwtIgnore
     @PostMapping("/login")
-    public Result adminLogin(HttpServletResponse response, String username, String password) {
+    public Result adminLogin(HttpServletResponse response, @RequestBody String username, @RequestBody String password) {
 
         // 这里模拟测试, 默认登录成功，返回用户ID和角色信息
         if (!"admin".equals(username) && !"666666".equals(password)) {
+            log.info("### username: " + username + " ###");
+            log.info("### password: " + password + " ###");
             log.info("### 用户名或密码错误! ###");
             return Result.FAIL("用户名或密码错误!");
         }
