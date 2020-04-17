@@ -23,7 +23,7 @@ public class HelloController {
     @PostMapping
     public Result hello(@RequestBody String username) {
 
-        log.info("### hello: " + " ###");
+        log.info("### hello: " + username + " ###");
         JSONObject result = new JSONObject();
         result.put("token", username);
         return Result.SUCCESS(result);
