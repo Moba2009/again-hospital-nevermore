@@ -21,7 +21,7 @@ import java.util.UUID;
  * @Version 1.0
  **/
 @Slf4j
-//@CrossOrigin
+@CrossOrigin
 @RestController
 public class AdminUserController {
 

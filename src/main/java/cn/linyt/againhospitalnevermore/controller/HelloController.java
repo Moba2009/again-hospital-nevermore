@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.*;
  * @Version 1.0
  **/
 @RestController
+@CrossOrigin
 @RequestMapping("/hello")
 public class HelloController {
 
 //    @JwtIgnore
     @PostMapping
-    public Result hello(String username) {
+    public Result hello(@RequestBody String username) {
 
         JSONObject result = new JSONObject();
         result.put("token", username);
